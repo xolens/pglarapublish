@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         verbose="true">
+    <php>
+        <env name="DB_CONNECTION" value="pgsql"/>
+        <env name="DB_HOST" value="127.0.0.1"/>
+        <env name="DB_PORT" value="5432"/>
+        <env name="DB_DATABASE" value="minefopstat"/>
+        <env name="DB_SCHEMA" value="minefopstat"/>
+        <env name="DB_USERNAME" value="minefopstat"/>
+        <env name="DB_PASSWORD" value="minefopstat"/>
+    </php>
+    <testsuites>
+        <testsuite name="reset-migration">
+            <file>src/Xolens/PgLarapublish/Test/CleanSchemaTest.php</file>
+        </testsuite> 
+        <testsuite name="test-package">
+            <file>src/Xolens/PgLarapublish/Test/Repository/PhotoRepositoryTest.php</file>
+            <file>src/Xolens/PgLarapublish/Test/Repository/CategoryRepositoryTest.php</file>
+            <file>src/Xolens/PgLarapublish/Test/Repository/FiletypeRepositoryTest.php</file>
+            <file>src/Xolens/PgLarapublish/Test/Repository/ArticleRepositoryTest.php</file>
+            <file>src/Xolens/PgLarapublish/Test/Repository/FileRepositoryTest.php</file>
+        </testsuite>
+        <testsuite name="test-packageview">
+            <file>src/Xolens/PgLarapublish/Test/Repository/View/PhotoViewRepositoryTest.php</file>
+            <file>src/Xolens/PgLarapublish/Test/Repository/View/CategoryViewRepositoryTest.php</file>
+            <file>src/Xolens/PgLarapublish/Test/Repository/View/FiletypeViewRepositoryTest.php</file>
+            <file>src/Xolens/PgLarapublish/Test/Repository/View/ArticleViewRepositoryTest.php</file>
+            <file>src/Xolens/PgLarapublish/Test/Repository/View/FileViewRepositoryTest.php</file>
+        </testsuite> 
+    </testsuites>
+</phpunit>

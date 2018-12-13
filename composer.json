@@ -1,0 +1,41 @@
+{
+    "name": "xolens/pglarapublish",
+    "description": "Laravel publication repository package..",
+    "type": "library",
+    "license": "MIT",
+    "authors": [{
+        "name": "xolens",
+        "email": "xolens.official@gmail.com"
+    }],
+    "require": {
+        "xolens/larapublish-contract": "dev-master",
+
+        "xolens/pglarautil": "1.0.0",
+        "xolens/larautil-contract": "1.0.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "~3.4.0"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "PgLarapublish\\PgLarapublishServiceProvider"
+            ]
+        }
+    },
+    "repositories": [{
+        "type": "git",
+        "url": "https://github.com/xolens/larautil-contract"
+    }, {
+        "type": "git",
+        "url": "https://github.com/xolens/pglarautil"
+    }, {
+        "type": "path",
+        "url": "/var/www/repositories/xolens.laravel/local/*"
+    }]
+}
