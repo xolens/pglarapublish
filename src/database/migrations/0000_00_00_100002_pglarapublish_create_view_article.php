@@ -22,17 +22,17 @@ class PgLarapublishCreateViewArticle extends PgLarapublishMigration
     public function up()
     {
         $mainTable = PgLarapublishCreateTableArticles::table();
-        $photoTable = PgLarapublishCreateTablePhotos::table();
         $categoryTable = PgLarapublishCreateTableCategorys::table();
+        $photoTable = PgLarapublishCreateTablePhotos::table();
         DB::statement("
             CREATE VIEW ".self::table()." AS(
                 SELECT 
                     ".$mainTable.".*,
-                    ".$photoTable.".name as photo_name,
-                    ".$categoryTable.".name as category_name
+                    ".$categoryTable.".name as category_name,
+                    ".$photoTable.".name as photo_name
                 FROM ".$mainTable." 
-                    LEFT JOIN ".$photoTable." ON ".$photoTable.".id = ".$mainTable.".photo_id
                     LEFT JOIN ".$categoryTable." ON ".$categoryTable.".id = ".$mainTable.".category_id
+                    LEFT JOIN ".$photoTable." ON ".$photoTable.".id = ".$mainTable.".photo_id
             )
         ");
     }

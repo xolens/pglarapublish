@@ -28,9 +28,10 @@ class PgLarapublishCreateTableFiles extends PgLarapublishMigration
             $table->increments('id');
             $table->string('name')->unique();
             $table->text('description')->nullable();
-            $table->integer('article_id')->index();
             $table->integer('size');
             $table->datetime('create_date')->nullable();
+            $table->integer('article_id')->index();
+            $table->integer('file_type_id')->index();
         });
         if(self::logEnabled()){
             self::registerForLog();

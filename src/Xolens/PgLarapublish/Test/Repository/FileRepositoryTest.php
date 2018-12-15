@@ -4,6 +4,7 @@ namespace Xolens\PgLarapublish\Test\Repository;
 
 use Xolens\PgLarapublish\App\Repository\FileRepository;
 use Xolens\PgLarapublish\App\Repository\ArticleRepository;
+use Xolens\PgLarapublish\App\Repository\FileTypeRepository;
 use Xolens\LarautilContract\App\Util\Model\Sorter;
 use Xolens\LarautilContract\App\Util\Model\Filterer;
 use Xolens\PgLarapublish\Test\WritableTestPgLarapublishBase;
@@ -11,6 +12,7 @@ use Xolens\PgLarapublish\Test\WritableTestPgLarapublishBase;
 final class FileRepositoryTest extends WritableTestPgLarapublishBase
 {
     protected $articleRepo;
+    protected $fileTypeRepo;
     /**
      * Setup the test environment.
      */
@@ -19,6 +21,7 @@ final class FileRepositoryTest extends WritableTestPgLarapublishBase
         $this->artisan('migrate');
         $repo = new FileRepository();
         $this->articleRepo = new ArticleRepository();
+        $this->fileTypeRepo = new FileTypeRepository();
         $this->repo = $repo;
     }
 
@@ -28,12 +31,14 @@ final class FileRepositoryTest extends WritableTestPgLarapublishBase
     public function test_make(){
         $i = rand(0, 10000);
         $articleId = $this->articleRepo->model()::inRandomOrder()->first()->id;
+        $fileTypeId = $this->fileTypeRepo->model()::inRandomOrder()->first()->id;
         $item = $this->repository()->make([
             'name' => 'name'.$i,
             'description' => 'description'.$i,
-            'article_id' => $articleId,
             'size' => 'size'.$i,
             'create_date' => self::getRandomTimestamps(),
+            'article_id' => $articleId,
+            'file_type_id' => $fileTypeId,
         ]);
         $this->assertTrue(true);
     }
@@ -58,12 +63,14 @@ final class FileRepositoryTest extends WritableTestPgLarapublishBase
         
         for($i=$count; $i<($toGenerateCount+$count); $i++){
             $articleId = $this->articleRepo->model()::inRandomOrder()->first()->id;
+            $fileTypeId = $this->fileTypeRepo->model()::inRandomOrder()->first()->id;
             $item = $this->repository()->create([
                 'name' => 'name'.$i,
                 'description' => 'description'.$i,
-                'article_id' => $articleId,
                 'size' => random_int(0,400000),
                 'create_date' => self::getRandomTimestamps(),
+                'article_id' => $articleId,
+                'file_type_id' => $fileTypeId,
             ]);
             $generatedItemsId[] = $item->response()->id;
         }

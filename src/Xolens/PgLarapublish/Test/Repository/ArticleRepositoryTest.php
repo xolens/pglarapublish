@@ -3,16 +3,16 @@
 namespace Xolens\PgLarapublish\Test\Repository;
 
 use Xolens\PgLarapublish\App\Repository\ArticleRepository;
-use Xolens\PgLarapublish\App\Repository\CategoryRepository;
 use Xolens\PgLarapublish\App\Repository\PhotoRepository;
+use Xolens\PgLarapublish\App\Repository\CategoryRepository;
 use Xolens\LarautilContract\App\Util\Model\Sorter;
 use Xolens\LarautilContract\App\Util\Model\Filterer;
 use Xolens\PgLarapublish\Test\WritableTestPgLarapublishBase;
 
 final class ArticleRepositoryTest extends WritableTestPgLarapublishBase
 {
-    protected $categoryRepo;
     protected $photoRepo;
+    protected $categoryRepo;
     /**
      * Setup the test environment.
      */
@@ -20,8 +20,8 @@ final class ArticleRepositoryTest extends WritableTestPgLarapublishBase
         parent::setUp();
         $this->artisan('migrate');
         $repo = new ArticleRepository();
-        $this->categoryRepo = new CategoryRepository();
         $this->photoRepo = new PhotoRepository();
+        $this->categoryRepo = new CategoryRepository();
         $this->repo = $repo;
     }
 
@@ -30,18 +30,21 @@ final class ArticleRepositoryTest extends WritableTestPgLarapublishBase
      */
     public function test_make(){
         $i = rand(0, 10000);
-        $categoryId = $this->categoryRepo->model()::inRandomOrder()->first()->id;
         $photoId = $this->photoRepo->model()::inRandomOrder()->first()->id;
+        $categoryId = $this->categoryRepo->model()::inRandomOrder()->first()->id;
         $item = $this->repository()->make([
             'name' => 'name'.$i,
             'text' => 'text'.$i,
             'description' => 'description'.$i,
             'type' => 'type'.$i,
-            'category_id' => $categoryId,
-            'photo_id' => $photoId,
             'position' => 'position'.$i,
             'publish_date' => self::getRandomTimestamps(),
             'keywords' => 'keywords'.$i,
+            'displayed' => 'displayed'.$i,
+            'short_value' => 'shortValue'.$i,
+            'value_unit' => 'valueUnit'.$i,
+            'photo_id' => $photoId,
+            'category_id' => $categoryId,
         ]);
         $this->assertTrue(true);
     }
@@ -65,18 +68,21 @@ final class ArticleRepositoryTest extends WritableTestPgLarapublishBase
         $generatedItemsId = [];
         
         for($i=$count; $i<($toGenerateCount+$count); $i++){
-            $categoryId = $this->categoryRepo->model()::inRandomOrder()->first()->id;
             $photoId = $this->photoRepo->model()::inRandomOrder()->first()->id;
+            $categoryId = $this->categoryRepo->model()::inRandomOrder()->first()->id;
             $item = $this->repository()->create([
                 'name' => 'name'.$i,
                 'text' => 'text'.$i,
                 'description' => 'description'.$i,
                 'type' => 'type'.$i,
-                'category_id' => $categoryId,
-                'photo_id' => $photoId,
                 'position' => random_int(0,400000),
                 'publish_date' => self::getRandomTimestamps(),
                 'keywords' => 'keywords'.$i,
+                'displayed' => $i%2==0,
+                'short_value' => 'shortValue'.$i,
+                'value_unit' => 'valueUnit'.$i,
+                'photo_id' => $photoId,
+                'category_id' => $categoryId,
             ]);
             $generatedItemsId[] = $item->response()->id;
         }

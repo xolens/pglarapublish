@@ -30,11 +30,14 @@ class PgLarapublishCreateTableArticles extends PgLarapublishMigration
             $table->string('text');
             $table->text('description')->nullable();
             $table->string('type');
-            $table->integer('category_id')->index();
-            $table->integer('photo_id')->index();
             $table->integer('position');
             $table->datetime('publish_date')->nullable();
             $table->string('keywords')->nullable();
+            $table->boolean('displayed')->nullable();
+            $table->string('short_value')->nullable();
+            $table->string('value_unit')->nullable();
+            $table->integer('photo_id')->index();
+            $table->integer('category_id')->index();
         });
         if(self::logEnabled()){
             self::registerForLog();

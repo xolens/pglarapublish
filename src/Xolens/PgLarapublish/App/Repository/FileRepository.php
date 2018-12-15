@@ -17,12 +17,13 @@ class FileRepository extends AbstractWritableRepository implements FileRepositor
     public function validationRules(array $data){
         $id = self::get($data,'id');
         $articleId = self::get($data,'article_id');
+        $fileTypeId = self::get($data,'file_type_id');
         return [
-            'id' => ['required',Rule::unique(PgLarapublishCreateTableFiles::table())->where(function ($query) use($id, $articleId) {
-                return $query->where('id','!=', $id)->where('article_id', $articleId);
+            'id' => ['required',Rule::unique(PgLarapublishCreateTableFiles::table())->where(function ($query) use($id, $articleId, $fileTypeId) {
+                return $query->where('id','!=', $id)->where('article_id', $articleId)->where('file_type_id', $fileTypeId);
             })],
-            'name' => [Rule::unique(PgLarapublishCreateTableFiles::table())->where(function ($query) use($id, $articleId) {
-                return $query->where('id','!=', $id)->where('article_id', $articleId);
+            'name' => [Rule::unique(PgLarapublishCreateTableFiles::table())->where(function ($query) use($id, $articleId, $fileTypeId) {
+                return $query->where('id','!=', $id)->where('article_id', $articleId)->where('file_type_id', $fileTypeId);
             })],
         ];
     }

@@ -9,6 +9,7 @@ use PgLarapublishCreateTableFiles;
 class File extends Model
 {
     public const ARTICLE_PROPERTY = 'article_id';
+    public const FILE_TYPE_PROPERTY = 'file_type_id';
 
     public $timestamps = false;
 
@@ -18,7 +19,7 @@ class File extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'name', 'description', 'article_id', 'size', 'create_date', 
+        'id', 'name', 'description', 'size', 'create_date', 'article_id', 'file_type_id', 
     ];
 
     /**
@@ -35,5 +36,9 @@ class File extends Model
 
     public function article(){
         return $this->belongsTo('Xolens\PgLarapublish\App\Model\Article','article_id');
+    } 
+
+    public function fileType(){
+        return $this->belongsTo('Xolens\PgLarapublish\App\Model\FileType','file_type_id');
     } 
 }
