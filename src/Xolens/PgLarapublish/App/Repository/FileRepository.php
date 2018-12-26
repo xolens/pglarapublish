@@ -17,13 +17,13 @@ class FileRepository extends AbstractWritableRepository implements FileRepositor
     public function validationRules(array $data){
         $id = self::get($data,'id');
         $articleId = self::get($data,'article_id');
-        $fileTypeId = self::get($data,'file_type_id');
+        $filetypeId = self::get($data,'filetype_id');
         return [
-            'id' => ['required',Rule::unique(PgLarapublishCreateTableFiles::table())->where(function ($query) use($id, $articleId, $fileTypeId) {
-                return $query->where('id','!=', $id)->where('article_id', $articleId)->where('file_type_id', $fileTypeId);
+            'id' => ['required',Rule::unique(PgLarapublishCreateTableFiles::table())->where(function ($query) use($id, $articleId, $filetypeId) {
+                return $query->where('id','!=', $id)->where('article_id', $articleId)->where('filetype_id', $filetypeId);
             })],
-            'name' => [Rule::unique(PgLarapublishCreateTableFiles::table())->where(function ($query) use($id, $articleId, $fileTypeId) {
-                return $query->where('id','!=', $id)->where('article_id', $articleId)->where('file_type_id', $fileTypeId);
+            'name' => [Rule::unique(PgLarapublishCreateTableFiles::table())->where(function ($query) use($id, $articleId, $filetypeId) {
+                return $query->where('id','!=', $id)->where('article_id', $articleId)->where('filetype_id', $filetypeId);
             })],
         ];
     }

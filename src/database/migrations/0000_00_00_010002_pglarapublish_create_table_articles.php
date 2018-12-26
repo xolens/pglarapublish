@@ -27,17 +27,17 @@ class PgLarapublishCreateTableArticles extends PgLarapublishMigration
         Schema::create(self::table(), function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
-            $table->string('text');
-            $table->text('description')->nullable();
-            $table->string('type');
-            $table->integer('position');
+            $table->string('title');
+            $table->text('paragraph');
+            //$table->text('description')->nullable();
+            //$table->string('type');
             $table->datetime('publish_date')->nullable();
             $table->string('keywords')->nullable();
             $table->boolean('displayed')->nullable();
-            $table->string('short_value')->nullable();
-            $table->string('value_unit')->nullable();
-            $table->integer('photo_id')->index();
+            //$table->string('short_value')->nullable();
+            //$table->string('value_unit')->nullable();
             $table->integer('category_id')->index();
+            $table->integer('photo_id')->nullable()->index();
         });
         if(self::logEnabled()){
             self::registerForLog();

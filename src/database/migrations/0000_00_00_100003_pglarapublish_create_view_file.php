@@ -22,13 +22,16 @@ class PgLarapublishCreateViewFile extends PgLarapublishMigration
     public function up()
     {
         $mainTable = PgLarapublishCreateTableFiles::table();
+        $filetypeTable = PgLarapublishCreateTableFiletypes::table();
         $articleTable = PgLarapublishCreateTableArticles::table();
         DB::statement("
             CREATE VIEW ".self::table()." AS(
                 SELECT 
                     ".$mainTable.".*,
+                    ".$filetypeTable.".name as filetype_name,
                     ".$articleTable.".name as article_name
                 FROM ".$mainTable." 
+                    LEFT JOIN ".$filetypeTable." ON ".$filetypeTable.".id = ".$mainTable.".filetype_id
                     LEFT JOIN ".$articleTable." ON ".$articleTable.".id = ".$mainTable.".article_id
             )
         ");

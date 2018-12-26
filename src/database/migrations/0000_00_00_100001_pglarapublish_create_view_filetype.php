@@ -22,11 +22,14 @@ class PgLarapublishCreateViewFiletype extends PgLarapublishMigration
     public function up()
     {
         $mainTable = PgLarapublishCreateTableFiletypes::table();
+        $photoTable = PgLarapublishCreateTablePhotos::table();
         DB::statement("
             CREATE VIEW ".self::table()." AS(
                 SELECT 
-                    ".$mainTable.".*
+                    ".$mainTable.".*,
+                    ".$photoTable.".name as photo_name
                 FROM ".$mainTable." 
+                    LEFT JOIN ".$photoTable." ON ".$photoTable.".id = ".$mainTable.".photo_id
             )
         ");
     }

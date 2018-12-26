@@ -31,7 +31,7 @@ class PgLarapublishCreateTableFiles extends PgLarapublishMigration
             $table->integer('size');
             $table->datetime('create_date')->nullable();
             $table->integer('article_id')->index();
-            $table->integer('file_type_id')->index();
+            $table->integer('filetype_id')->index();
         });
         if(self::logEnabled()){
             self::registerForLog();

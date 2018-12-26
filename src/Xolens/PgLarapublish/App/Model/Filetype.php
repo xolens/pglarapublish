@@ -8,6 +8,7 @@ use PgLarapublishCreateTableFiletypes;
 
 class Filetype extends Model
 {
+    public const PHOTO_PROPERTY = 'photo_id';
 
     public $timestamps = false;
 
@@ -17,7 +18,7 @@ class Filetype extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'name', 'description', 'icon', 'type', 
+        'id', 'name', 'description', 'type', 'photo_id', 
     ];
 
     /**
@@ -31,4 +32,8 @@ class Filetype extends Model
         $this->table = PgLarapublishCreateTableFiletypes::table();
         parent::__construct($attributes);
     }
+
+    public function photo(){
+        return $this->belongsTo('Xolens\PgLarapublish\App\Model\Photo','photo_id');
+    } 
 }

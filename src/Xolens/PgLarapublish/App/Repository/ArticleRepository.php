@@ -16,14 +16,14 @@ class ArticleRepository extends AbstractWritableRepository implements ArticleRep
     /*
     public function validationRules(array $data){
         $id = self::get($data,'id');
-        $photoId = self::get($data,'photo_id');
         $categoryId = self::get($data,'category_id');
+        $photoId = self::get($data,'photo_id');
         return [
-            'id' => ['required',Rule::unique(PgLarapublishCreateTableArticles::table())->where(function ($query) use($id, $photoId, $categoryId) {
-                return $query->where('id','!=', $id)->where('photo_id', $photoId)->where('category_id', $categoryId);
+            'id' => ['required',Rule::unique(PgLarapublishCreateTableArticles::table())->where(function ($query) use($id, $categoryId, $photoId) {
+                return $query->where('id','!=', $id)->where('category_id', $categoryId)->where('photo_id', $photoId);
             })],
-            'name' => [Rule::unique(PgLarapublishCreateTableArticles::table())->where(function ($query) use($id, $photoId, $categoryId) {
-                return $query->where('id','!=', $id)->where('photo_id', $photoId)->where('category_id', $categoryId);
+            'name' => [Rule::unique(PgLarapublishCreateTableArticles::table())->where(function ($query) use($id, $categoryId, $photoId) {
+                return $query->where('id','!=', $id)->where('category_id', $categoryId)->where('photo_id', $photoId);
             })],
         ];
     }

@@ -3,12 +3,14 @@
 namespace Xolens\PgLarapublish\Test\Repository;
 
 use Xolens\PgLarapublish\App\Repository\FiletypeRepository;
+use Xolens\PgLarapublish\App\Repository\PhotoRepository;
 use Xolens\LarautilContract\App\Util\Model\Sorter;
 use Xolens\LarautilContract\App\Util\Model\Filterer;
 use Xolens\PgLarapublish\Test\WritableTestPgLarapublishBase;
 
 final class FiletypeRepositoryTest extends WritableTestPgLarapublishBase
 {
+    protected $photoRepo;
     /**
      * Setup the test environment.
      */
@@ -16,6 +18,7 @@ final class FiletypeRepositoryTest extends WritableTestPgLarapublishBase
         parent::setUp();
         $this->artisan('migrate');
         $repo = new FiletypeRepository();
+        $this->photoRepo = new PhotoRepository();
         $this->repo = $repo;
     }
 
@@ -24,11 +27,12 @@ final class FiletypeRepositoryTest extends WritableTestPgLarapublishBase
      */
     public function test_make(){
         $i = rand(0, 10000);
+        $photoId = $this->photoRepo->model()::inRandomOrder()->first()->id;
         $item = $this->repository()->make([
             'name' => 'name'.$i,
             'description' => 'description'.$i,
-            'icon' => 'icon'.$i,
             'type' => 'type'.$i,
+            'photo_id' => $photoId,
         ]);
         $this->assertTrue(true);
     }
@@ -52,11 +56,12 @@ final class FiletypeRepositoryTest extends WritableTestPgLarapublishBase
         $generatedItemsId = [];
         
         for($i=$count; $i<($toGenerateCount+$count); $i++){
+            $photoId = $this->photoRepo->model()::inRandomOrder()->first()->id;
             $item = $this->repository()->create([
                 'name' => 'name'.$i,
                 'description' => 'description'.$i,
-                'icon' => 'icon'.$i,
                 'type' => 'type'.$i,
+                'photo_id' => $photoId,
             ]);
             $generatedItemsId[] = $item->response()->id;
         }
