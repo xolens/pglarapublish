@@ -26,10 +26,8 @@ class PgLarapublishCreateViewFiletype extends PgLarapublishMigration
         DB::statement("
             CREATE VIEW ".self::table()." AS(
                 SELECT 
-                    ".$mainTable.".*,
-                    ".$photoTable.".name as photo_name
+                    ".$mainTable.".*
                 FROM ".$mainTable." 
-                    LEFT JOIN ".$photoTable." ON ".$photoTable.".id = ".$mainTable.".photo_id
             )
         ");
     }

@@ -26,9 +26,8 @@ final class PhotoRepositoryTest extends WritableTestPgLarapublishBase
         $i = rand(0, 10000);
         $item = $this->repository()->make([
             'name' => 'name'.$i,
-            'description' => 'description'.$i,
             'size' => 'size'.$i,
-            'extension' => 'extension'.$i,
+            'create_date' => self::getRandomTimestamps(),
         ]);
         $this->assertTrue(true);
     }
@@ -54,9 +53,8 @@ final class PhotoRepositoryTest extends WritableTestPgLarapublishBase
         for($i=$count; $i<($toGenerateCount+$count); $i++){
             $item = $this->repository()->create([
                 'name' => 'name'.$i,
-                'description' => 'description'.$i,
                 'size' => random_int(0,400000),
-                'extension' => 'extension'.$i,
+                'create_date' => self::getRandomTimestamps(),
             ]);
             $generatedItemsId[] = $item->response()->id;
         }

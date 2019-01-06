@@ -27,10 +27,8 @@ class PgLarapublishCreateTableFiles extends PgLarapublishMigration
         Schema::create(self::table(), function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
-            $table->text('description')->nullable();
             $table->integer('size');
-            $table->datetime('create_date')->nullable();
-            $table->integer('article_id')->index();
+            $table->datetime('create_date');
             $table->integer('filetype_id')->index();
         });
         if(self::logEnabled()){

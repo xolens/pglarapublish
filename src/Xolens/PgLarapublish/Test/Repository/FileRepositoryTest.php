@@ -11,7 +11,6 @@ use Xolens\PgLarapublish\Test\WritableTestPgLarapublishBase;
 
 final class FileRepositoryTest extends WritableTestPgLarapublishBase
 {
-    protected $articleRepo;
     protected $filetypeRepo;
     /**
      * Setup the test environment.
@@ -20,7 +19,6 @@ final class FileRepositoryTest extends WritableTestPgLarapublishBase
         parent::setUp();
         $this->artisan('migrate');
         $repo = new FileRepository();
-        $this->articleRepo = new ArticleRepository();
         $this->filetypeRepo = new FiletypeRepository();
         $this->repo = $repo;
     }
@@ -30,14 +28,10 @@ final class FileRepositoryTest extends WritableTestPgLarapublishBase
      */
     public function test_make(){
         $i = rand(0, 10000);
-        $articleId = $this->articleRepo->model()::inRandomOrder()->first()->id;
         $filetypeId = $this->filetypeRepo->model()::inRandomOrder()->first()->id;
         $item = $this->repository()->make([
             'name' => 'name'.$i,
-            'description' => 'description'.$i,
-            'size' => 'size'.$i,
             'create_date' => self::getRandomTimestamps(),
-            'article_id' => $articleId,
             'filetype_id' => $filetypeId,
         ]);
         $this->assertTrue(true);
@@ -62,14 +56,11 @@ final class FileRepositoryTest extends WritableTestPgLarapublishBase
         $generatedItemsId = [];
         
         for($i=$count; $i<($toGenerateCount+$count); $i++){
-            $articleId = $this->articleRepo->model()::inRandomOrder()->first()->id;
             $filetypeId = $this->filetypeRepo->model()::inRandomOrder()->first()->id;
             $item = $this->repository()->create([
                 'name' => 'name'.$i,
-                'description' => 'description'.$i,
                 'size' => random_int(0,400000),
                 'create_date' => self::getRandomTimestamps(),
-                'article_id' => $articleId,
                 'filetype_id' => $filetypeId,
             ]);
             $generatedItemsId[] = $item->response()->id;

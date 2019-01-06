@@ -19,7 +19,7 @@ class Article extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'name', 'title', 'paragraph', 'publish_date', 'keywords', 'displayed', 'category_id', 'photo_id', 
+        'id', 'title', 'paragraph', 'publish_date', 'displayed', 'category_id', 'file_id', 'photo_id', 
     ];
 
     /**

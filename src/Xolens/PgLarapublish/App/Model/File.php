@@ -19,7 +19,7 @@ class File extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'name', 'description', 'size', 'create_date', 'article_id', 'filetype_id', 
+        'id', 'name', 'size', 'create_date', 'filetype_id', 
     ];
 
     /**
@@ -33,11 +33,7 @@ class File extends Model
         $this->table = PgLarapublishCreateTableFiles::table();
         parent::__construct($attributes);
     }
-
-    public function article(){
-        return $this->belongsTo('Xolens\PgLarapublish\App\Model\Article','article_id');
-    } 
-
+    
     public function filetype(){
         return $this->belongsTo('Xolens\PgLarapublish\App\Model\Filetype','filetype_id');
     } 

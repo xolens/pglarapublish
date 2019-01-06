@@ -14,56 +14,30 @@ class FileViewRepository extends AbstractReadableRepository implements FileViewR
     public function model(){
         return FileView::class;
     }
-     public function paginateByArticle($parentId, $perPage=50, $page = null,  $columns = ['*'], $pageName = 'page'){
-        $parentFilterer = new Filterer();
-        $parentFilterer->equals(File::ARTICLE_PROPERTY, $parentId);
-        return $this->paginateFiltered($parentFilterer, $perPage, $page,  $columns, $pageName);
-     }
 
-     public function paginateByArticleSorted($parentId, Sorter $sorter, $perPage=50, $page = null,  $columns = ['*'], $pageName = 'page'){
-        $parentFilterer = new Filterer();
-        $parentFilterer->equals(File::ARTICLE_PROPERTY, $parentId);
-        return $this->paginateSortedFiltered($sorter, $parentFilterer, $perPage, $page,  $columns, $pageName);
-     }
+    public function paginateByFiletype($parentId, $perPage=50, $page = null,  $columns = ['*'], $pageName = 'page'){
+      $parentFilterer = new Filterer();
+      $parentFilterer->equals(File::FILETYPE_PROPERTY, $parentId);
+      return $this->paginateFiltered($parentFilterer, $perPage, $page,  $columns, $pageName);
+   }
 
-     public function paginateByArticleFiltered($parentId, Filterer $filterer, $perPage=50, $page = null,  $columns = ['*'], $pageName = 'page'){
-        $parentFilterer = new Filterer();
-        $parentFilterer->equals(File::ARTICLE_PROPERTY, $parentId);
-        $parentFilterer->and($filterer);
-        return $this->paginateFiltered($parentFilterer, $perPage, $page,  $columns, $pageName);
-     }
+   public function paginateByFiletypeSorted($parentId, Sorter $sorter, $perPage=50, $page = null,  $columns = ['*'], $pageName = 'page'){
+      $parentFilterer = new Filterer();
+      $parentFilterer->equals(File::FILETYPE_PROPERTY, $parentId);
+      return $this->paginateSortedFiltered($sorter, $parentFilterer, $perPage, $page,  $columns, $pageName);
+   }
 
-     public function paginateByArticleSortedFiltered($parentId, Sorter $sorter, Filterer $filterer, $perPage=50, $page = null,  $columns = ['*'], $pageName = 'page'){
-        $parentFilterer = new Filterer();
-        $parentFilterer->equals(File::ARTICLE_PROPERTY, $parentId);
-        $parentFilterer->and($filterer);
-        return $this->paginateSortedFiltered($sorter, $parentFilterer, $perPage, $page,  $columns, $pageName);
-     }
+   public function paginateByFiletypeFiltered($parentId, Filterer $filterer, $perPage=50, $page = null,  $columns = ['*'], $pageName = 'page'){
+      $parentFilterer = new Filterer();
+      $parentFilterer->equals(File::FILETYPE_PROPERTY, $parentId);
+      $parentFilterer->and($filterer);
+      return $this->paginateFiltered($parentFilterer, $perPage, $page,  $columns, $pageName);
+   }
 
-     public function paginateByFiletype($parentId, $perPage=50, $page = null,  $columns = ['*'], $pageName = 'page'){
-        $parentFilterer = new Filterer();
-        $parentFilterer->equals(File::FILETYPE_PROPERTY, $parentId);
-        return $this->paginateFiltered($parentFilterer, $perPage, $page,  $columns, $pageName);
-     }
-
-     public function paginateByFiletypeSorted($parentId, Sorter $sorter, $perPage=50, $page = null,  $columns = ['*'], $pageName = 'page'){
-        $parentFilterer = new Filterer();
-        $parentFilterer->equals(File::FILETYPE_PROPERTY, $parentId);
-        return $this->paginateSortedFiltered($sorter, $parentFilterer, $perPage, $page,  $columns, $pageName);
-     }
-
-     public function paginateByFiletypeFiltered($parentId, Filterer $filterer, $perPage=50, $page = null,  $columns = ['*'], $pageName = 'page'){
-        $parentFilterer = new Filterer();
-        $parentFilterer->equals(File::FILETYPE_PROPERTY, $parentId);
-        $parentFilterer->and($filterer);
-        return $this->paginateFiltered($parentFilterer, $perPage, $page,  $columns, $pageName);
-     }
-
-     public function paginateByFiletypeSortedFiltered($parentId, Sorter $sorter, Filterer $filterer, $perPage=50, $page = null,  $columns = ['*'], $pageName = 'page'){
-        $parentFilterer = new Filterer();
-        $parentFilterer->equals(File::FILETYPE_PROPERTY, $parentId);
-        $parentFilterer->and($filterer);
-        return $this->paginateSortedFiltered($sorter, $parentFilterer, $perPage, $page,  $columns, $pageName);
-     }
-
+   public function paginateByFiletypeSortedFiltered($parentId, Sorter $sorter, Filterer $filterer, $perPage=50, $page = null,  $columns = ['*'], $pageName = 'page'){
+      $parentFilterer = new Filterer();
+      $parentFilterer->equals(File::FILETYPE_PROPERTY, $parentId);
+      $parentFilterer->and($filterer);
+      return $this->paginateSortedFiltered($sorter, $parentFilterer, $perPage, $page,  $columns, $pageName);
+   }
 }

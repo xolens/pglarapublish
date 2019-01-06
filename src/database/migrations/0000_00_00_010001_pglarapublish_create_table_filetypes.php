@@ -28,8 +28,7 @@ class PgLarapublishCreateTableFiletypes extends PgLarapublishMigration
             $table->increments('id');
             $table->string('name')->unique();
             $table->text('description')->nullable();
-            $table->string('type');
-            $table->integer('photo_id')->index();
+            $table->string('icon_url')->unique();
         });
         if(self::logEnabled()){
             self::registerForLog();

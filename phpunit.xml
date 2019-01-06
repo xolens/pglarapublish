@@ -20,15 +20,15 @@
             <file>src/Xolens/PgLarapublish/Test/Repository/CategoryRepositoryTest.php</file>
             <file>src/Xolens/PgLarapublish/Test/Repository/PhotoRepositoryTest.php</file>
             <file>src/Xolens/PgLarapublish/Test/Repository/FiletypeRepositoryTest.php</file>
-            <file>src/Xolens/PgLarapublish/Test/Repository/ArticleRepositoryTest.php</file>
             <file>src/Xolens/PgLarapublish/Test/Repository/FileRepositoryTest.php</file>
+            <file>src/Xolens/PgLarapublish/Test/Repository/ArticleRepositoryTest.php</file>
         </testsuite>
         <testsuite name="test-packageview">
             <file>src/Xolens/PgLarapublish/Test/Repository/View/CategoryViewRepositoryTest.php</file>
             <file>src/Xolens/PgLarapublish/Test/Repository/View/PhotoViewRepositoryTest.php</file>
             <file>src/Xolens/PgLarapublish/Test/Repository/View/FiletypeViewRepositoryTest.php</file>
-            <file>src/Xolens/PgLarapublish/Test/Repository/View/ArticleViewRepositoryTest.php</file>
             <file>src/Xolens/PgLarapublish/Test/Repository/View/FileViewRepositoryTest.php</file>
+            <file>src/Xolens/PgLarapublish/Test/Repository/View/ArticleViewRepositoryTest.php</file>
         </testsuite> 
     </testsuites>
 </phpunit>

@@ -27,9 +27,8 @@ class PgLarapublishCreateTablePhotos extends PgLarapublishMigration
         Schema::create(self::table(), function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
-            $table->string('description')->nullable();
             $table->integer('size');
-            $table->string('extension');
+            $table->datetime('create_date');
         });
         if(self::logEnabled()){
             self::registerForLog();
