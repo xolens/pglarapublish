@@ -3,7 +3,7 @@
 namespace Xolens\PgLarapublish\App\Repository;
 
 use Xolens\PgLarapublish\App\Model\Photo;
-use Xolens\PublishContract\App\Contract\Repository\PhotoRepositoryContract;
+use Xolens\PgLarapublish\App\Repository\PhotoRepositoryContract;
 use Xolens\PgLarautil\App\Repository\AbstractWritableRepository;
 use Illuminate\Validation\Rule;
 use PgLarapublishCreateTablePhotos;

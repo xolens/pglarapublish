@@ -3,8 +3,8 @@
 namespace Xolens\PgLarapublish\Test\Repository\View;
 
 use Xolens\PgLarapublish\App\Repository\View\CategoryViewRepository;
-use Xolens\LarautilContract\App\Util\Model\Sorter;
-use Xolens\LarautilContract\App\Util\Model\Filterer;
+use Xolens\PgLarautil\App\Util\Model\Sorter;
+use Xolens\PgLarautil\App\Util\Model\Filterer;
 use Xolens\PgLarapublish\Test\ReadOnlyTestPgLarapublishBase;
 
 final class CategoryViewRepositoryTest extends ReadOnlyTestPgLarapublishBase

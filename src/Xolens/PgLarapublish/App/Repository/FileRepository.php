@@ -3,7 +3,7 @@
 namespace Xolens\PgLarapublish\App\Repository;
 
 use Xolens\PgLarapublish\App\Model\File;
-use Xolens\PublishContract\App\Contract\Repository\FileRepositoryContract;
+use Xolens\PgLarapublish\App\Repository\FileRepositoryContract;
 use Xolens\PgLarautil\App\Repository\AbstractWritableRepository;
 use Illuminate\Validation\Rule;
 use PgLarapublishCreateTableFiles;

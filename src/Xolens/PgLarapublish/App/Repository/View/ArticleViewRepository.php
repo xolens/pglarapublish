@@ -4,10 +4,10 @@ namespace Xolens\PgLarapublish\App\Repository\View;
 
 use Xolens\PgLarapublish\App\Model\Article;
 use Xolens\PgLarapublish\App\Model\View\ArticleView;
-use Xolens\PublishContract\App\Contract\Repository\View\ArticleViewRepositoryContract;
+use Xolens\PgLarapublish\App\Repository\View\ArticleViewRepositoryContract;
 use Xolens\PgLarautil\App\Repository\AbstractReadableRepository;
-use Xolens\LarautilContract\App\Util\Model\Filterer;
-use Xolens\LarautilContract\App\Util\Model\Sorter;
+use Xolens\PgLarautil\App\Util\Model\Filterer;
+use Xolens\PgLarautil\App\Util\Model\Sorter;
 
 class ArticleViewRepository extends AbstractReadableRepository implements ArticleViewRepositoryContract
 {

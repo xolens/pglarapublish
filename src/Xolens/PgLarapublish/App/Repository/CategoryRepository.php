@@ -3,7 +3,7 @@
 namespace Xolens\PgLarapublish\App\Repository;
 
 use Xolens\PgLarapublish\App\Model\Category;
-use Xolens\PublishContract\App\Contract\Repository\CategoryRepositoryContract;
+use Xolens\PgLarapublish\App\Repository\CategoryRepositoryContract;
 use Xolens\PgLarautil\App\Repository\AbstractWritableRepository;
 use Illuminate\Validation\Rule;
 use PgLarapublishCreateTableCategorys;

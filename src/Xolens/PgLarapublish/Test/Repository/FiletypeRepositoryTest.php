@@ -3,8 +3,8 @@
 namespace Xolens\PgLarapublish\Test\Repository;
 
 use Xolens\PgLarapublish\App\Repository\FiletypeRepository;
-use Xolens\LarautilContract\App\Util\Model\Sorter;
-use Xolens\LarautilContract\App\Util\Model\Filterer;
+use Xolens\PgLarautil\App\Util\Model\Sorter;
+use Xolens\PgLarautil\App\Util\Model\Filterer;
 use Xolens\PgLarapublish\Test\WritableTestPgLarapublishBase;
 
 final class FiletypeRepositoryTest extends WritableTestPgLarapublishBase

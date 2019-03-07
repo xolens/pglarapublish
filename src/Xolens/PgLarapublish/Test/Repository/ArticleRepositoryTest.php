@@ -6,8 +6,8 @@ use Xolens\PgLarapublish\App\Repository\ArticleRepository;
 use Xolens\PgLarapublish\App\Repository\CategoryRepository;
 use Xolens\PgLarapublish\App\Repository\PhotoRepository;
 use Xolens\PgLarapublish\App\Repository\FileRepository;
-use Xolens\LarautilContract\App\Util\Model\Sorter;
-use Xolens\LarautilContract\App\Util\Model\Filterer;
+use Xolens\PgLarautil\App\Util\Model\Sorter;
+use Xolens\PgLarautil\App\Util\Model\Filterer;
 use Xolens\PgLarapublish\Test\WritableTestPgLarapublishBase;
 
 final class ArticleRepositoryTest extends WritableTestPgLarapublishBase

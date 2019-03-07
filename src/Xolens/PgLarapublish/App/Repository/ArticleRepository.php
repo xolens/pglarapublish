@@ -3,7 +3,7 @@
 namespace Xolens\PgLarapublish\App\Repository;
 
 use Xolens\PgLarapublish\App\Model\Article;
-use Xolens\PublishContract\App\Contract\Repository\ArticleRepositoryContract;
+use Xolens\PgLarapublish\App\Repository\ArticleRepositoryContract;
 use Xolens\PgLarautil\App\Repository\AbstractWritableRepository;
 use Illuminate\Validation\Rule;
 use PgLarapublishCreateTableArticles;

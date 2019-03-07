@@ -3,8 +3,8 @@
 namespace Xolens\PgLarapublish\Test\Repository;
 
 use Xolens\PgLarapublish\App\Repository\PhotoRepository;
-use Xolens\LarautilContract\App\Util\Model\Sorter;
-use Xolens\LarautilContract\App\Util\Model\Filterer;
+use Xolens\PgLarautil\App\Util\Model\Sorter;
+use Xolens\PgLarautil\App\Util\Model\Filterer;
 use Xolens\PgLarapublish\Test\WritableTestPgLarapublishBase;
 
 final class PhotoRepositoryTest extends WritableTestPgLarapublishBase
